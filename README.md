@@ -1,9 +1,9 @@
-# Lab-1plus
+# TrackingApplication for learning purposes
 
-Tema pentru primele laboratoare. Termene de predare: incepand cu saptamana 2. Urmariti cursul si anunturile de pe teams pentru urmatoarele termene si alte functionalitati care se vor cere pe parcurs.
+The main purpose of this project was to learn .NET Framework.
+During the project we covered topics like: WEB API, DBContext, Migrations, Controllers, MVC, Authentication with JWT
 
-Scrieti o aplicatie .NET REST API pentru time tracking. Vor fi suportate functionalitatile:
+Backend: .NET Framework
+Front-end: Angular(Material)
+Database: SQL Server
 
-1. Adaugarea unei activitati: `Nume`, `Descriere`, `Data`, `Numar ore`.
-2. Show all, Edit, Delete activitati (`CRUD`).
-3. Filtrare activitati dupa `Data` si dupa `Numar ore`.
