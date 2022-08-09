@@ -1,0 +1,101 @@
+<form [formGroup]="trackingForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" />
+      <!-- <mat-error *ngIf="name?.invalid"
+        >Need at least {{ name?.errors?.minlength?.requiredLength }} characters.
+      </mat-error> -->
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" />
+      <mat-error *ngIf="description?.invalid"
+        >Description is required.</mat-error
+      >
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Date</mat-label>
+      <input matInput formControlName="date" />
+      <mat-error *ngIf="date?.invalid">Date is required.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Number of hours</mat-label>
+      <input matInput formControlName="numberOfHours" />
+      <mat-error *ngIf="numberOfHours?.invalid"
+        >Number of hours is required.</mat-error
+      >
+    </mat-form-field>
+
+    <!--   // Cu titlu de exemplu vizual pentru cerinta de bonus din saptamana 5 - NU este functional.
+ -->
+    <!-- <mat-form-field appearance="fill" *ngFor="let num of nums">
+      <mat-label>Subactivitate {{ num }}:</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+      <button mat-raised-button (click)="deleteSubactivity(num)">Remove</button>
+    </mat-form-field> -->
+
+    <button class="btn" [disabled]="trackingForm?.invalid">Add</button>
+  </div>
+</form>
+
+<form
+  class="container"
+  [formGroup]="subActivityForm"
+  (ngSubmit)="onSubactivitySubmit()"
+>
+  <!-- <div class="add-sub-activity-container"> -->
+  <mat-form-field appearance="fill">
+    <mat-label>Subactivity Description</mat-label>
+    <input matInput formControlName="description" />
+    <!-- <mat-error *ngIf="subActivityDescription?.invalid"
+        >Description is required</mat-error
+      > -->
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Subactivity Number of Hours</mat-label>
+    <input matInput formControlName="numberOfHours" />
+    <!-- <mat-error *ngIf="subActivityNumbersOfHours?.invalid"
+        >Number of Hours must be greater than 0!</mat-error
+      > -->
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Subactivity Difficulty</mat-label>
+    <input matInput formControlName="dificulty" />
+    <!-- <mat-error *ngIf="subActivityDifficulty?.invalid"
+        >Difficulty is required</mat-error >-->
+  </mat-form-field>
+  <br />
+  <button
+    color="primary"
+    type="submit"
+    class="btn"
+    [disabled]="subActivityForm.invalid"
+  >
+    Add Subactivity
+  </button>
+  <!-- </div> -->
+</form>
+
+<div *ngFor="let subactivity of subactivities">
+  <mat-form-field appearance="fill">
+    <mat-label>Description</mat-label>
+    <input matInput type="text" [(ngModel)]="subactivity.description" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Number Of Hours</mat-label>
+    <input matInput type="text" [(ngModel)]="subactivity.numberOfHours" />
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Difficulty</mat-label>
+    <input matInput type="text" [(ngModel)]="subactivity.dificulty" />
+  </mat-form-field>
+
+  <mat-icon (click)="deleteSubActivity(subactivity)">delete</mat-icon>
+</div>

@@ -1,0 +1,85 @@
+<div class="container">
+  <form [formGroup]="trackingForm" (ngSubmit)="onSubmit()">
+    <div class="add-activity-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" />
+        <mat-error *ngIf="name?.invalid && name?.errors?.['minlength']"
+          >Must be at least
+          {{name?.errors?.["minlength"]?.requiredLength}} chars!</mat-error
+        >
+        <mat-error *ngIf="name?.invalid && name?.errors?.['required']"
+          >Name is required!</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+        <mat-error *ngIf="description?.invalid"
+          >Description is required</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Date</mat-label>
+        <input type="datetime" matInput formControlName="date" />
+        <mat-error *ngIf="date?.invalid">Invalid date</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Number of Hours</mat-label>
+        <input matInput formControlName="numberOfHours" />
+        <mat-error *ngIf="numberOfHours?.invalid"
+          >Number of Hours must be greater than 0!</mat-error
+        >
+      </mat-form-field>
+      <br />
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="trackingForm.invalid"
+      >
+        Update
+      </button>
+    </div>
+  </form>
+
+  <form [formGroup]="subActivityForm" (ngSubmit)="onSubactivitySubmit()">
+    <div class="add-sub-activity-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Subactivity Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+        <mat-error *ngIf="subActivityDescription?.invalid"
+          >Description is required</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Subactivity Number of Hours</mat-label>
+        <input matInput formControlName="numberOfHours" />
+        <mat-error *ngIf="subActivityNumbersOfHours?.invalid"
+          >Number of Hours must be greater than 0!</mat-error
+        >
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Subactivity Difficulty</mat-label>
+        <textarea matInput formControlName="dificulty"></textarea>
+        <mat-error *ngIf="subActivityDifficulty?.invalid"
+          >Difficulty is required</mat-error
+        >
+      </mat-form-field>
+      <br />
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        [disabled]="subActivityForm.invalid"
+      >
+        Add Subactivity
+      </button>
+    </div>
+  </form>
+</div>

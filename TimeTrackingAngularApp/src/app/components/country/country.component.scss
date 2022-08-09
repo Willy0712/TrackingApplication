@@ -1,0 +1,17 @@
+@import "../table/table.component.scss";
+
+.pdfButton {
+  display: flex;
+  justify-content: center;
+  margin: 6rem;
+}
+
+ol {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  color: #6c6c6c;
+  font-weight: 500;
+  font-size: medium;
+}

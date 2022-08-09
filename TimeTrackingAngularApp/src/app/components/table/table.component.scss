@@ -1,0 +1,181 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.main-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 64px auto;
+  max-width: 1200px;
+}
+
+mat-card-title {
+  align-self: center;
+  padding: 32px;
+}
+
+.form {
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.todo-table {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.todo-icon-operation {
+  color: #046f92;
+  cursor: pointer;
+}
+
+.mat-column-operations {
+  min-width: 180px;
+  text-align: center;
+}
+
+.operations-div {
+  max-width: 100%;
+  display: flex;
+  gap: 16px;
+}
+
+// table {
+//   width: 100%;
+//   table-layout: fixed;
+// }
+
+// th,
+// td {
+//   overflow: hidden;
+//   width: 200px;
+//   text-overflow: ellipsis;
+//   white-space: nowrap;
+// }
+
+td,
+th {
+  /* border: 1px solid black; */
+
+  padding: 0.2rem 0.5rem;
+  position: relative;
+  overflow: hidden;
+}
+table th {
+  background-color: #046f92;
+  color: #fff;
+  width: 25%;
+}
+
+::ng-deep td .mat-form-field-appearance-fill .mat-form-field-flex {
+  /*change color of label*/
+  background-color: inherit;
+  padding: 0;
+  margin: 0 auto;
+}
+
+::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+  /*change color of label*/
+  background-color: inherit;
+}
+
+table tr:nth-child(even) {
+  background-color: #e9ecef;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00b4cc;
+  padding: 5px;
+  height: 20px;
+  border-radius: 5px;
+  outline: none;
+  color: #9dbfaf;
+}
+
+.searchTerm:focus {
+  color: #00b4cc;
+}
+p {
+  color: #383c52;
+}
+
+// .mat-card-actions {
+//   display: flex;
+//   margin: 0 auto;
+//   gap: 3.2rem;
+// }
+
+.mat-card-actions {
+  display: grid;
+  margin: 0 auto;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  text-align: center;
+  gap: 3.2rem;
+}
+
+// .add-tracking,
+// .search-tracking {
+//   display: flex;
+//   flex-direction: column;
+//   gap: 8px;
+// }
+
+// .search-tracking {
+//   margin-top: 70px;
+// }
+.search-tracking button {
+  position: relative;
+  top: 70px;
+}
+
+.search-tracking-country {
+  text-align: center;
+  margin: 12rem;
+}
+
+// .search-tracking {
+//   display: flex;
+// }
+
+// .btn:link,
+// .btn:visited
+
+.btn {
+  background-color: #0b7285;
+  background-color: #074955;
+  background-color: #046f92;
+  width: 180px;
+  /* background-color: #78bdf6; */
+  /* background-color: #228be6; */
+  /* background-color: #3a88bd; */
+  /* background-color: #1d445e; */
+  color: #fff;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 18px;
+  padding: 8px 16px;
+  display: inline-block;
+  border-radius: 100px;
+  justify-self: center;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: #0c8599;
+}
+
+.edit-input {
+  background-color: none;
+  position: relative;
+}

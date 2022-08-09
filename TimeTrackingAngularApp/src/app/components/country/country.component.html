@@ -1,0 +1,58 @@
+<mat-card-content id="htmlData">
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    class="mat-elevation-z8 todo-table"
+  >
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef class="table-header">Name</th>
+      <!-- <td mat-cell *matCellDef="let element">
+        <ng-template #notEditing>
+          {{ element.name }}
+        </ng-template>
+      </td> -->
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="date">
+      <th mat-header-cell *matHeaderCellDef>Date</th>
+      <!-- <tr *ngFor="let element of trackingsList | filter: term"> -->
+      <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+      <!-- </tr> -->
+    </ng-container>
+
+    <ng-container matColumnDef="numberofhours">
+      <th mat-header-cell *matHeaderCellDef>Number of Hours</th>
+
+      <td mat-cell *matCellDef="let element">
+        {{ element.numberOfHours }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="countyName">
+      <th mat-header-cell *matHeaderCellDef>Country name</th>
+
+      <td mat-cell *matCellDef="let element">
+        {{ element.countyName }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+
+  <ol id="htmlDataTwo">
+    <li *ngFor="let item of items">{{ item }}</li>
+  </ol>
+</mat-card-content>
+
+<app-country-details (newItemEvent)="addItem($event)"></app-country-details>
+
+<div class="pdfButton">
+  <button class="btn" (click)="openPDF()">Download PDF</button>
+</div>

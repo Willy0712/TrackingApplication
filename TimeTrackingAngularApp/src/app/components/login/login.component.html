@@ -1,0 +1,70 @@
+<app-home> </app-home>
+<!-- <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="box">
+    <mat-card-header>
+      <mat-card-title>Log in</mat-card-title>
+    </mat-card-header>
+    <form
+      class="example-form"
+      #loginForm="ngForm"
+      (ngSubmit)="login(loginForm)"
+    >
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email" />
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Password" />
+        </mat-form-field>
+      </mat-card-content>
+      <button
+        mat-stroked-button
+        color="accent"
+        class="btn-block"
+        type="submit"
+        [disabled]="!loginForm.valid"
+      >
+        Log in
+      </button>
+    </form>
+  </mat-card>
+</div> -->
+
+<div class="container">
+  <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+    <h2 class="form-signin-heading">Login</h2>
+    <div *ngIf="invalidLogin" class="alert alert-danger">
+      Invalid username or password.
+    </div>
+    <br />
+    <label for="username" class="sr-only">Email address</label>
+    <input
+      type="email"
+      id="username"
+      name="username"
+      [(ngModel)]="credentials.email"
+      class="form-control"
+      placeholder="Email"
+      required
+    />
+    <br />
+    <label for="password" class="sr-only">Password</label>
+    <input
+      type="password"
+      id="password"
+      name="password"
+      [(ngModel)]="credentials.password"
+      class="form-control"
+      placeholder="Password"
+      required
+    />
+    <br />
+    <button
+      class="btn btn-lg btn-primary"
+      type="submit"
+      [disabled]="!loginForm.valid"
+    >
+      Log in
+    </button>
+  </form>
+</div>

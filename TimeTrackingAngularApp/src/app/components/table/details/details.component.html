@@ -1,0 +1,20 @@
+<div>
+  <ul>
+    <li>{{ dataSource?.name }}</li>
+    <li>{{ dataSource?.description }}</li>
+    <li>{{ dataSource?.date }}</li>
+    <li>{{ dataSource?.numberOfHours }}</li>
+  </ul>
+
+  <ul>
+    <li *ngFor="let data of dataSource?.subActivities">
+      {{ data.description }}
+    </li>
+    <li *ngFor="let data of dataSource?.subActivities">
+      {{ data.numberOfHours }}
+    </li>
+    <li *ngFor="let data of dataSource?.subActivities">
+      {{ data.dificulty }}
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,248 @@
+<!-- /*ngIf="trackingsList.length > 0" -->
+<!-- [routerLink]="'/table/details/:element.id'" -->
+<h2 onclick="logout()">LOGOUT</h2>
+<mat-card class="main-card">
+  <mat-card-title>Tracking Application</mat-card-title>
+
+  <mat-card-content>
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      class="mat-elevation-z8 todo-table"
+    >
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef class="table-header">Name</th>
+        <td mat-cell *matCellDef="let element">
+          <mat-form-field
+            *ngIf="element.isEditing; else notEditing"
+            appearance="fill"
+          >
+            <input
+              matInput
+              class="edit-input"
+              name="name"
+              [(ngModel)]="element.name"
+            />
+          </mat-form-field>
+          <ng-template #notEditing>
+            {{ element.name }}
+          </ng-template>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+        <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="date">
+        <th mat-header-cell *matHeaderCellDef>Date</th>
+        <!-- <tr *ngFor="let element of trackingsList | filter: term"> -->
+        <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+        <!-- </tr> -->
+      </ng-container>
+
+      <ng-container matColumnDef="numberofhours">
+        <th mat-header-cell *matHeaderCellDef>Number of Hours</th>
+
+        <td mat-cell *matCellDef="let element">
+          {{ element.numberOfHours }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="operations">
+        <mat-header-cell *matHeaderCellDef>
+          <button mat-icon-button color="primary" [routerLink]="'/table/add'">
+            <mat-icon class="todo-icon-operation">add</mat-icon>
+          </button>
+        </mat-header-cell>
+
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let element">
+          <div
+            class="operations-div"
+            *ngIf="!element.preparingDelete && !element.isEditing"
+          >
+            <mat-icon
+              (click)="element.preparingDelete = true"
+              class="todo-icon-operation"
+            >
+              delete
+            </mat-icon>
+            <mat-icon
+              [routerLink]="['/table/edit/', element.id]"
+              class="todo-icon-operation"
+            >
+              edit
+            </mat-icon>
+
+            <mat-icon
+              [routerLink]="['/table/details/', element.id]"
+              class="todo-icon-operation"
+            >
+              more
+            </mat-icon>
+          </div>
+          <div *ngIf="element.preparingDelete" class="operations-div">
+            Are you sure?
+            <button mat-icon-button (click)="deleteTracking(element)">
+              <mat-icon>check</mat-icon>
+            </button>
+            <button mat-icon-button (click)="element.preparingDelete = false">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </div>
+          <!-- <div *ngIf="element.isEditing" class="operations-div">
+            Are you done? -->
+          <!-- <button mat-icon-button onClick() = "update "> -->
+          <!-- <mat-icon>check</mat-icon> -->
+          <!-- </button> -->
+          <!-- <button mat-icon-button (click)="element.isEditing = false">
+              <mat-icon>cancel</mat-icon>
+            </button> -->
+          <!-- </div> -->
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </mat-card-content>
+
+  <div class="mat-card-actions">
+    <div>
+      <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Name:</mat-label>
+          <input
+            matInput
+            placeholder="Ex.: Maria"
+            name="todo"
+            [(ngModel)]="newTracking.name"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Description:</mat-label>
+          <input
+            matInput
+            placeholder="Ex.: Maria"
+            name="todo"
+            [(ngModel)]="newTracking.description"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Date</mat-label>
+          <input
+            matInput
+            placeholder="Ex.: Running"
+            name="todo"
+            [(ngModel)]="newTracking.date"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Number of hours:</mat-label>
+          <input
+            matInput
+            placeholder="Ex: M2017-06-03T10:34"
+            name="todo"
+            [(ngModel)]="newTracking.numberOfHours"
+          />
+        </mat-form-field>
+      </form>
+      <button
+        mat-raised-button
+        color="accent"
+        (click)="addTracking()"
+        class="btn"
+      >
+        add
+      </button>
+    </div>
+    <!-- </mat-card-actions> -->
+
+    <!-- //////////// SEARCH PART ////////////// -->
+    <div class="search-tracking">
+      <!-- <mat-card-actions class="mat-card-columns"> -->
+      <form class="example-form">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Number of hours:</mat-label>
+          <input
+            matInput
+            placeholder="Ex: M2017-06-03T10:34"
+            name="todo"
+            [(ngModel)]="searchTracking.numberOfHours"
+          />
+        </mat-form-field>
+      </form>
+      <button
+        mat-raised-button
+        class="btn"
+        (click)="filterTracking(searchTracking)"
+      >
+        Search
+      </button>
+    </div>
+    <!-- </mat-card-actions> -->
+  </div>
+
+  <!-- </mat-card-actions> -->
+</mat-card>
+
+<div class="search-tracking-country">
+  <!-- <mat-card-actions class="mat-card-columns"> -->
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Country:</mat-label>
+      <input
+        matInput
+        placeholder="Ex: Romania"
+        name="country"
+        [(ngModel)]="country"
+      />
+    </mat-form-field>
+  </form>
+  <button mat-raised-button class="btn" (click)="sendParamsCountry()">
+    Search
+  </button>
+</div>
+
+<div class="search-tracking-country">
+  <!-- <mat-card-actions class="mat-card-columns"> -->
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Start date:</mat-label>
+      <input
+        matInput
+        placeholder="Ex: M2017-06-03T10:34"
+        name="startdate"
+        [(ngModel)]="startDate"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>End date:</mat-label>
+      <input
+        matInput
+        placeholder="Ex: M2020-06-03T10:34"
+        name="country"
+        [(ngModel)]="endDate"
+      />
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>State:</mat-label>
+      <input
+        matInput
+        placeholder="Ex: State"
+        name="state"
+        [(ngModel)]="state"
+      />
+    </mat-form-field>
+  </form>
+  <button mat-raised-button class="btn" (click)="sendParamsState()">
+    Search
+  </button>
+</div>

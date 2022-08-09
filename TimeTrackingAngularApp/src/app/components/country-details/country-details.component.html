@@ -1,0 +1,7 @@
+<div class="input-block">
+  <label for="item-input">Report of the day:</label>
+  <textarea type="text" rows="4" cols="50" id="item-input" #newItem> </textarea>
+  <button class="btn" type="button" (click)="addNewItem(newItem.value)">
+    Add one note
+  </button>
+</div>
